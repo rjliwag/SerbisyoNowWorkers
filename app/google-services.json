@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "184129539491",
+    "firebase_url": "https://serbisyonowv1-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "serbisyonowv1",
+    "storage_bucket": "serbisyonowv1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184129539491:android:f9bd8bd4d9339524355e16",
+        "android_client_info": {
+          "package_name": "com.example.serbisyonowv1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3GwH7Ex86T5BL6BUBmo0NWnc-f-k5WcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

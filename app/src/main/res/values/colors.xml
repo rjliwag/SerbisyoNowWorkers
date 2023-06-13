@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name= "maroon">#A42020</color>
+    <color name="gray">#6A6A6A</color>
+    <color name="green">#2D8210</color>
+    <color name="hint_text_color">#808080</color>
+    <color name="settinngs">#4CA6A8</color>
+</resources>
