@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group
+        android:checkableBehavior="single">
 
         <item
-            android:id="@+id/profile"
+            android:id="@+id/nav_profilr"
             android:icon="@drawable/ic_profile"
             android:title="My Profile" />
+
         <item
-            android:id="@+id/history"
+            android:id="@+id/nav_settings"
             android:icon="@drawable/ic_history"
             android:title="My History" />
+
         <item
-            android:id="@+id/settings"
+            android:id="@+id/nav_share"
             android:icon="@drawable/settings"
             android:title="Settings" />
 
@@ -19,13 +26,14 @@
     </group>
     <item
         android:title="">
+
         <menu>
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_back"
-                android:title="Logout"/>
+                android:title="Logout" />
         </menu>
-    </item>
 
+    </item>
 
 </menu>

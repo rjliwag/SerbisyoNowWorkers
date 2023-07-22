@@ -36,29 +36,8 @@ class Searchpage : Fragment() {
 
     override fun onViewCreated(view: View ,savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-         drawerLayout = view.findViewById(R.id.drawer_layout)
-        navigationView = view.findViewById(R.id.nav_view)
-        toolbar = view.findViewById(R.id.tool_bar)
 
 
-        (activity as AppCompatActivity).setSupportActionBar(toolbar)
-        (activity as AppCompatActivity).supportActionBar?.setDisplayShowTitleEnabled(false)
-
-        actionBarDrawerToggle = ActionBarDrawerToggle(
-            requireActivity(),
-            drawerLayout,
-            toolbar,
-            R.string.open, // Set your own string resource for "open drawer" accessibility description
-            R.string.close // Set your own string resource for "close drawer" accessibility description
-        )
-        drawerLayout.addDrawerListener(actionBarDrawerToggle)
-        actionBarDrawerToggle.syncState()
-
-        (activity as AppCompatActivity).supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_profile)
 
     }
 

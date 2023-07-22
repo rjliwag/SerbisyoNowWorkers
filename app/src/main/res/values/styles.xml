@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.SerbisyoNowv1" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.SerbisyoNowv1" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/maroon</item>
         <item name="colorSecondary">@color/white</item>
         <item name="colorAccent">@color/black</item>
@@ -14,4 +14,11 @@
 <style name="MyProgressbar">
     <item name="color">@color/maroon</item>
 </style>
+
+    <style name="DialogAnimation">
+
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
+
+    </style>
 </resources>
