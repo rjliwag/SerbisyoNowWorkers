@@ -15,6 +15,7 @@
         android:src="@drawable/aklogo"/>
 
     <TextView
+        android:id="@+id/curentname"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,6 +25,7 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:id="@+id/currentemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="contact@androidknowledge.com"

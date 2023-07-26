@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
@@ -33,8 +34,19 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var database : FirebaseDatabase
+      var database : FirebaseDatabase? = null
+     var reference: DatabaseReference? = null
     private val emailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+
+    private lateinit var firstNameEditText: TextInputEditText
+    private lateinit var lastNameEditText: TextInputEditText
+    private lateinit var emailEditText: TextInputEditText
+    private lateinit var passwordEditText: TextInputEditText
+    private lateinit var phoneNoEditText: TextInputEditText
+    private lateinit var addressEditText: TextInputEditText
+    private lateinit var birthdate: EditText
+    private lateinit var  spinnersex : Spinner
+    private lateinit var regButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +54,22 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        firebaseAuth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
+        reference = database?.reference!!.child("profile")
+
+
+
+        register()
+
+
+
+
+
+
+
+
 //----------------------------------------------------------------------------------------
 
         //bithday calendar
@@ -69,7 +97,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         val spinnerSex = findViewById<Spinner>(R.id.spinnerSex)
-        val sexArray = arrayOf("Sex", "Male", "Female")
+        val sexArray = arrayOf("Gender","Male", "Female","Others")
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, sexArray)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -83,7 +111,7 @@ class RegisterActivity : AppCompatActivity() {
                     val selectedSex = parent?.getItemAtPosition(position).toString()
 
                     // Remove the "Sex" option from the dropdown
-                    val updatedSexArray = sexArray.filter { it != "Sex" }.toTypedArray()
+                    val updatedSexArray = sexArray.filter { it != "Gender" }.toTypedArray()
                     val updatedAdapter = ArrayAdapter(this@RegisterActivity, android.R.layout.simple_spinner_item, updatedSexArray)
                     updatedAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                     spinnerSex.adapter = updatedAdapter
@@ -102,114 +130,45 @@ class RegisterActivity : AppCompatActivity() {
         }
 
 
-        //database register
 
-        firebaseAuth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
-
-        val fname1 : TextInputEditText = findViewById(R.id.fname)
-        val lname1 : TextInputEditText = findViewById(R.id.lname)
-        val email1 : TextInputEditText = findViewById(R.id.email_reg)
-        val pass1 : TextInputEditText = findViewById(R.id.password_reg)
-        val passlayout1: TextInputLayout = findViewById(R.id.passlayout)
-        val phone1 : TextInputEditText = findViewById(R.id.phone)
-        val address1 : TextInputEditText = findViewById(R.id.address)
-        val birthdate1 : EditText = findViewById(R.id.birthdate)
-        val sex1 : Spinner = findViewById(R.id.spinnerSex)
-        val registerbtn: Button = findViewById(R.id.registerbtn)
-        val registerprogbar: ProgressBar = findViewById(R.id.registerProgbar)
-
-        val signintext : TextView = findViewById(R.id.text_create_reg)
-        signintext.setOnClickListener {
-            val intent = Intent(this, LoginActivity ::class.java)
-            startActivity(intent)
         }
+    private fun register(){
 
-        registerbtn.setOnClickListener{
-            val fname = fname1.text.toString()
-            val lname = lname1.toString()
-            val email = email1.text.toString()
-            val pass = pass1.text.toString()
+        regButton.setOnClickListener{
 
-            val phone = phone1.text.toString()
-            val address = address1.text.toString()
-            val birthdate = birthdate1.text.toString()
-            val sex = sex1.selectedItem.toString()
+            if(TextUtils.isEmpty(firstNameEditText.text.toString())){
+                firstNameEditText.setError("Please enter first name")
 
-            registerprogbar.visibility = View.VISIBLE
-            passlayout1.isPasswordVisibilityToggleEnabled = true
+            }else if (TextUtils.isEmpty(lastNameEditText.text.toString())){
+                lastNameEditText.setError("Please Enter Last Name")
+            }else if (TextUtils.isEmpty(emailEditText.text.toString())){
+                emailEditText.setError("Please Enter Last Name")
+            }else if (TextUtils.isEmpty(passwordEditText.text.toString())){
+                passwordEditText.setError("Please Enter Last Name")
+            }else if (TextUtils.isEmpty(phoneNoEditText.text.toString())){
+                phoneNoEditText.setError("Please Enter Last Name")
+            }else if (TextUtils.isEmpty(addressEditText.text.toString())){
+                addressEditText.setError("Please Enter Last Name")
+            }else if (TextUtils.isEmpty(birthdate.text.toString())){
+                birthdate.setError("Please Enter Last Name")
+            }
 
-
-            if(fname.isEmpty() || lname.isEmpty() || email.isEmpty() ||pass.isEmpty() ||phone.isEmpty() ||address.isEmpty() ||birthdate.isEmpty() ||sex.isEmpty() ){
-                if(fname.isEmpty()){
-                    fname1.error = "Enter your Firstname"
-                }
-                if(lname.isEmpty()){
-                    lname1.error = "Enter your Lastname"
-                }
-                if(email.isEmpty()){
-                    email1.error = "Enter your Email"
-                }
-                if(pass.isEmpty()){
-                    passlayout1.isPasswordVisibilityToggleEnabled = false
-                    pass1.error = "Enter your Password"
-                }
-                if(phone.isEmpty()){
-                    phone1.error = "Enter your Phone no."
-                }
-                if(address.isEmpty()){
-                    address1.error = "Enter your Address"
-                }
-
-                if(birthdate.isEmpty()){
-                    birthdate1.error = "Enter your Birthday"
-                }
-               Toast.makeText(this, "Enter Valid Details", Toast.LENGTH_SHORT).show()
-                registerprogbar.visibility = View.GONE
-            }else if(!email.matches(emailpattern.toRegex())){
-                registerprogbar.visibility = View.GONE
-                email1.error = "Enter valid Email Address"
-                Toast.makeText(this, "Enter Valid Email Address", Toast.LENGTH_SHORT).show()
-
-            }else if(phone.length != 10){
-                registerprogbar.visibility = View.GONE
-                phone1.error = "Enter a Valid Phone Number"
-                Toast.makeText(this, "Enter Valid Phone Number" , Toast.LENGTH_SHORT).show()
-            }else if(pass.length <= 8){
-                registerprogbar.visibility = View.GONE
-                pass1.error = "Enter a Password more than 8 character"
-                Toast.makeText(this, "Enter a Password atleast 8 character" , Toast.LENGTH_SHORT).show()
-            }else{
-                firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val databaseRef = database.reference.child("users").child(firebaseAuth.currentUser!!.uid)
-                        val user = Users(
-                            firstname = fname,
-                            lastname = lname,
-                            emailadd = email,
-                            phoneno = phone,
-                            addressnow = address,
-                            birthdate2 = birthdate,
-                            sex3 = sex,
-                            uid = firebaseAuth.currentUser!!.uid
-                        )
-
-                        databaseRef.setValue(user).addOnCompleteListener { dbTask ->
-                            if (dbTask.isSuccessful) {
-                                val intent = Intent(this, LoginActivity::class.java)
-                                startActivity(intent)
-                            } else {
-                                Toast.makeText(this, "Something went wrong, try again", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    } else {
-                        Toast.makeText(this, "Something went wrong, try again", Toast.LENGTH_SHORT).show()
+            firebaseAuth.createUserWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
+                .addOnCompleteListener{
+                    if (it.isSuccessful){
+                        val currentUser = firebaseAuth.currentUser
+                        val currentUserDb = reference?.child(currentUser?.uid!!)
+                        currentUserDb?.child("firstname")?.setValue(firstNameEditText.text.toString())
+                        startActivity(Intent(this, MainPageActivity::class.java))
+                        finish()
+                    }else{
+                        Toast.makeText(this,"Registration Failed, Please try Again!", Toast.LENGTH_LONG).show()
                     }
                 }
 
-            }
+
         }
-        }
+    }
 
     }
 

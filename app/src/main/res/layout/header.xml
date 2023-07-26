@@ -2,18 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="#E4E4E4"
     android:gravity="bottom"
     android:padding="20dp"
-    >
+    tools:context=".Maindashboard">
 
     <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
         />
-
+<LinearLayout
+    android:id="@+id/navlayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <TextView
+        android:id = "@+id/currentname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
@@ -21,6 +26,17 @@
         android:fontFamily="@font/poppinsbold"
         />
     <TextView
+       android:paddingLeft="10dp"
+        android:id = "@+id/currentlastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last name"
+        android:textSize="25dp"
+        android:fontFamily="@font/poppinsbold"
+        />
+</LinearLayout>
+    <TextView
+        android:id="@+id/currentemail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email Address"
