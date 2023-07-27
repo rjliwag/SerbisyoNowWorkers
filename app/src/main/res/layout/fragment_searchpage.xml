@@ -26,20 +26,14 @@
 
         >
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tool_bar"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="15dp"
 
-            app:navigationIcon="@drawable/ic_profile">
 
 
 
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppinsbold"
                 android:text="Workers"
@@ -47,7 +41,7 @@
                 android:textColor="@color/black"
                 android:textSize="25dp" />
 
-        </androidx.appcompat.widget.Toolbar>
+
 
     <LinearLayout
         android:id="@+id/layout2"
@@ -58,14 +52,16 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:layout_centerHorizontal="true">
-        <EditText
+
+        <androidx.appcompat.widget.SearchView
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
-            android:backgroundTint="#CACACA"
+            app:iconifiedByDefault="false"
             android:background="@drawable/search_shape"
-            android:hint="Search here"
-            android:paddingLeft="15dp"/>
+            android:paddingLeft="15dp"
+            app:queryHint="Seach Here"
+            />
 
         <ImageButton
             android:layout_width="50dp"

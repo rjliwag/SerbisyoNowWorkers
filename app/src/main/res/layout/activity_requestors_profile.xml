@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".requestorsProfile">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrowback"
+            />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="27dp"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/userdetail"
+        android:layout_below="@id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/profilepicture"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FirstName"
+            android:textSize="25dp"
+            android:fontFamily="@font/poppinssemibold"/>
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LastName"
+                android:textSize="25dp"
+                android:fontFamily="@font/poppinssemibold"/>
+
+        </LinearLayout>
+
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User ID:"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="15dp"/>
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="12345678"
+
+           android:paddingLeft="10dp"/>
+   </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="edit Profile"
+            android:textColor="#6F69B4"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/statistics"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/userdetail"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        >
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginHorizontal="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="40dp" />
+            <TextView
+                android:layout_marginTop="-9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Total Request \nPosted"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textSize="40dp"
+                android:drawableEnd="@drawable/feedbackstar"/>
+            <TextView
+                android:layout_marginTop="-9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Worker's \nRating"
+                android:textAlignment="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="40dp" />
+            <TextView
+                android:layout_marginTop="-9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "Archive request\n"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/statistics"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:gravity="center">
+     <View
+         android:layout_marginTop="10dp"
+         android:layout_width="350dp"
+         android:layout_height="1dp"
+         android:background="#C8C8D1"
+         android:layout_marginBottom="10dp"/>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lives in "
+            android:textSize="20dp"
+            android:drawableStart="@drawable/houselocation"
+            android:drawablePadding="17dp"
+            android:fontFamily="@font/poppinsregular"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adress Sample Here"
+        android:layout_marginLeft="5dp"
+        android:textSize="17dp"
+        android:fontFamily="@font/poppinsbold"/>
+
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:layout_width="295dp"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/emaildrawable"
+                android:drawablePadding="17dp"
+                android:fontFamily="@font/poppinsregular"
+                android:text="example@email.com"
+                android:textSize="20dp" />
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_width="350dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/statistics"
+            android:layout_centerHorizontal="true"
+            android:background="#C8C8D1"/>
+    </LinearLayout>
+
+</RelativeLayout>

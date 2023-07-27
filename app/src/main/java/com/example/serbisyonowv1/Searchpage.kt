@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,17 +26,13 @@ private const val ARG_PARAM2 = "param2"
  */
 class Searchpage : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-
-    private lateinit var drawerLayout : DrawerLayout
-    private lateinit var navigationView: NavigationView
-    private lateinit var toolbar: Toolbar
-    private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onViewCreated(view: View ,savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
 
 
 
@@ -47,6 +44,10 @@ class Searchpage : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_searchpage, container, false)
+
+
+
+
     }
 
     companion object {
