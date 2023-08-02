@@ -15,4 +15,8 @@
         android:id="@+id/menu_notification"
         android:icon="@drawable/icon_notif"
         android:title="Notification" />
+    <item
+        android:id="@+id/menu_profile"
+        android:icon="@drawable/ic_person"
+        android:title="Profile"/>
 </menu>

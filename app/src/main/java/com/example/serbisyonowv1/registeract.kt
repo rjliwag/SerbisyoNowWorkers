@@ -46,8 +46,8 @@ class registeract : AppCompatActivity() {
         backbtn.setOnClickListener{
             onBackPressed()
         }
-        val regbtn: Button = findViewById(R.id.registerbtn)
-        regbtn.setOnClickListener{
+
+        registeractBinding.registerbtn.setOnClickListener{
             validateData()
         }
 
@@ -188,8 +188,7 @@ class registeract : AppCompatActivity() {
 
         val hashMap: HashMap<String, Any?> = HashMap()
         hashMap["uid"] = uid
-        hashMap["firstname"] = fname
-        hashMap["lastname"] = lname
+        hashMap["fullname"] = fname + lname
         hashMap["email"] = email
         hashMap["phoneno"] = phoneno
         hashMap["address"] = address
@@ -205,7 +204,7 @@ class registeract : AppCompatActivity() {
             .addOnSuccessListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Account Created!", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this, MainPageActivity::class.java))
+                startActivity(Intent(this, Login::class.java))
                 finish()
             }
             .addOnFailureListener{ e->

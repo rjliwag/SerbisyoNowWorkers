@@ -29,30 +29,7 @@
                 android:layout_height="56dp"
                 android:background="@android:color/transparent"
                 android:elevation="4dp"
-
                 />
-   <LinearLayout
-       android:id="@+id/welcomename"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_gravity="center">
-            <TextView
-                android:id="@+id/welcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Welcome"
-                android:fontFamily="@font/poppinsbold"
-                android:textSize="30dp"/>
-       <TextView
-           android:id="@+id/welcomeTextView"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="SampleName"
-           android:fontFamily="@font/poppinsbold"
-           android:textSize="30dp"
-           android:paddingLeft="10dp"
-           android:textColor="@color/maroon"/>
-   </LinearLayout>
         </FrameLayout>
 
     </LinearLayout>

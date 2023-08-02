@@ -34,9 +34,6 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var firebaseAuth: FirebaseAuth
-      var database : FirebaseDatabase? = null
-     var reference: DatabaseReference? = null
-    private val emailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
     private lateinit var firstNameEditText: TextInputEditText
     private lateinit var lastNameEditText: TextInputEditText
@@ -50,23 +47,9 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-        firebaseAuth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance()
-        reference = database?.reference!!.child("profile")
-
-
-
-        register()
-
-
-
-
-
 
 
 
@@ -153,7 +136,7 @@ class RegisterActivity : AppCompatActivity() {
                 birthdate.setError("Please Enter Last Name")
             }
 
-            firebaseAuth.createUserWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
+          /*  firebaseAuth.createUserWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString())
                 .addOnCompleteListener{
                     if (it.isSuccessful){
                         val currentUser = firebaseAuth.currentUser
@@ -164,7 +147,7 @@ class RegisterActivity : AppCompatActivity() {
                     }else{
                         Toast.makeText(this,"Registration Failed, Please try Again!", Toast.LENGTH_LONG).show()
                     }
-                }
+                }*/
 
 
         }

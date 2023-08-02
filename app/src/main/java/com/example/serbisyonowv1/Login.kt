@@ -9,7 +9,6 @@ import android.widget.Toast
 import com.example.serbisyonowv1.databinding.ActivityLogin2Binding
 
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -43,11 +42,11 @@ class Login : AppCompatActivity() {
     }
 
     private var email = ""
-    private var password =""
+    private var pass =""
 
     private fun validateData(){
         email = binding.emailAdd.text.toString().trim()
-        password = binding.passwordLogin.text.toString().trim()
+        pass = binding.passwordLogin.text.toString().trim()
 
         if(email.isEmpty()) {
             binding.emailAdd.setError("Please Input your Email")
@@ -55,7 +54,7 @@ class Login : AppCompatActivity() {
         }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             binding.emailAdd.setError("Invalid Email")
         }
-        else if (password.isEmpty()) {
+        else if (pass.isEmpty()) {
             binding.passwordLogin.setError("Please Enter Password")
 
         } else{
@@ -68,7 +67,7 @@ class Login : AppCompatActivity() {
         progressDialog.setMessage("Logging In...")
         progressDialog.show()
 
-        firebaseAuth.signInWithEmailAndPassword(email, password)
+        firebaseAuth.signInWithEmailAndPassword(email, pass)
             .addOnSuccessListener {
                 checkUser()
 
@@ -92,8 +91,11 @@ class Login : AppCompatActivity() {
 
                 override fun onDataChange(snapshot: DataSnapshot){
                     progressDialog.dismiss()
-                    startActivity(Intent(this@Login, Maindashboard::class.java))
-                    finish()
+
+
+                        startActivity(Intent(this@Login, dashboard::class.java))
+                        finish()
+
                 }
                 override fun onCancelled(error: DatabaseError){
 
