@@ -43,11 +43,11 @@ class Login : AppCompatActivity() {
     }
 
     private var email = ""
-    private var pass =""
+    private var password =""
 
     private fun validateData(){
         email = binding.emailAdd.text.toString().trim()
-        pass = binding.passwordLogin.text.toString().trim()
+        password = binding.passwordLogin.text.toString().trim()
 
         if(email.isEmpty()) {
             binding.emailAdd.setError("Please Input your Email")
@@ -55,7 +55,7 @@ class Login : AppCompatActivity() {
         }else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             binding.emailAdd.setError("Invalid Email")
         }
-        else if (pass.isEmpty()) {
+        else if (password.isEmpty()) {
             binding.passwordLogin.setError("Please Enter Password")
 
         } else{
@@ -68,7 +68,7 @@ class Login : AppCompatActivity() {
         progressDialog.setMessage("Logging In...")
         progressDialog.show()
 
-        firebaseAuth.signInWithEmailAndPassword(email, pass)
+        firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 checkUser()
 
@@ -87,34 +87,19 @@ class Login : AppCompatActivity() {
 
         val ref = FirebaseDatabase.getInstance().getReference("Users")
 
-        ref.child(firebaseUser.uid).addListenerForSingleValueEvent(object : ValueEventListener {
-
-            override fun onDataChange(snapshot: DataSnapshot) {
-                progressDialog.dismiss()
-
-                // Check if the snapshot exists and contains the user's data
-                if (snapshot.exists()) {
-                    // Get the user data from the snapshot
-                    val userData = snapshot.getValue(User::class.java)
-
-                    // Pass the user data to the dashboard activity
-                    val dashboardIntent = Intent(this@Login, dashboard::class.java)
-                    dashboardIntent.putExtra("userData", userData)
-                    startActivity(dashboardIntent)
+        ref.child(firebaseUser.uid)
+            .addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    startActivity(Intent(this@Login , dashboard::class.java))
                     finish()
-                } else {
-                    // If the user's data does not exist in the database, show an error message
-                    Toast.makeText(this@Login, "User does not exist. Please register first.", Toast.LENGTH_LONG).show()
-                    // Optionally, you can redirect the user to the registration page here
-                    // startActivity(Intent(this@Login, registeract::class.java))
                 }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                progressDialog.dismiss()
-                Toast.makeText(this@Login, "Database Error: ${error.message}", Toast.LENGTH_LONG).show()
-            }
-        })
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+
     }
 }
 

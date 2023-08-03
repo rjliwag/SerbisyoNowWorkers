@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         textCreate.setOnClickListener {
             // Handle the click event here
 
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
 
 

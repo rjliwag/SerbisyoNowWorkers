@@ -1,10 +1,8 @@
 package com.example.serbisyonowv1
 
+import android.service.autofill.UserData
 import androidx.lifecycle.ViewModel
 
 class UserViewModel : ViewModel() {
-    // Define variables to store user data
-    var firstName: String? = null
-    var lastName: String? = null
-    var email: String? = null
+    var userData: UserData? = null
 }

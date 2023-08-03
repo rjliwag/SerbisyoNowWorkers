@@ -30,7 +30,7 @@ class splashactivity : AppCompatActivity() {
     private fun checkuser() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser == null) {
-            startActivity(Intent(this, dashboard::class.java))
+            startActivity(Intent(this, lesdodis::class.java))
         } else {
             val ref = FirebaseDatabase.getInstance().getReference("Users")
 

@@ -43,7 +43,7 @@ class MainPageActivity : AppCompatActivity() {
                 R.id.nav_logout -> {
 
                     auth.signOut()
-                    startActivity(Intent(this, LoginActivity::class.java))
+                    startActivity(Intent(this, Login::class.java))
                     finish()
                     true
                 }
@@ -73,9 +73,9 @@ class MainPageActivity : AppCompatActivity() {
 
         // Move these lines here after navigationView is initialized
         val headerView: View = navigationView.getHeaderView(0)
-        currentname = headerView.findViewById(R.id.currentname)
+        currentname = headerView.findViewById(R.id.fullname)
         currentemail = headerView.findViewById(R.id.currentemail)
-        currentlastname = headerView.findViewById(R.id.currentlastname)
+
 
 
 
@@ -87,7 +87,7 @@ class MainPageActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         if (auth.currentUser == null){
-            val intent = Intent(this, LoginActivity ::class.java)
+            val intent = Intent(this, Login ::class.java)
             startActivity(intent)
         }
 

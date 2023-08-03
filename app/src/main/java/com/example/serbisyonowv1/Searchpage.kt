@@ -1,5 +1,6 @@
 package com.example.serbisyonowv1
 
+import UserDataViewModel
 import android.app.ActionBar
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.serbisyonowv1.databinding.ActivityMaindashboardBinding
 import com.example.serbisyonowv1.databinding.FragmentSearchpageBinding
@@ -39,10 +41,19 @@ private const val ARG_PARAM2 = "param2"
  */
 class Searchpage : Fragment() {
     // TODO: Rename and change types of parameters
-    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var userDataViewModel: UserDataViewModel
+
+
 
     override fun onViewCreated(view: View ,savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        userDataViewModel = ViewModelProvider(requireActivity()).get(UserDataViewModel::class.java)
+
+        val fullname = userDataViewModel.fullname
+        val email = userDataViewModel.email
+
+
 
 
 

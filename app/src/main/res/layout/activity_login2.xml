@@ -7,14 +7,7 @@
     tools:context=".Login"
     android:background="#FBFBFB">
 
-    <ProgressBar
-        android:id="@+id/signinProgbar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_centerInParent="true"
-        android:theme="@style/MyProgressbar"
-        android:visibility="gone"
-        />
+
 
     <TextView
         android:id="@+id/title"
@@ -37,7 +30,7 @@
         android:layout_toRightOf="@id/title"
         android:fontFamily="@font/poppinsbold"
         android:text="REQUESTOR"
-        android:textColor="@color/green"
+        android:textColor="@color/maroon"
         android:textSize="35dp" />
     <TextView
         android:id="@+id/text_2"

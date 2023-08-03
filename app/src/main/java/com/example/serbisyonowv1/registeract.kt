@@ -146,7 +146,7 @@ class registeract : AppCompatActivity() {
         } else if (email.isEmpty()) {
             registeractBinding.emailReg.setError("Please Enter Email Address")
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Toast.makeText(this, "Invalid Email Address", Toast.LENGTH_LONG).show()
+            registeractBinding.emailReg.setError("Invalid Email Address")
         } else if (pass.isEmpty()) {
             registeractBinding.passwordReg.setError("Please Enter Password")
         } else if (phoneno.isEmpty()) {
@@ -168,7 +168,7 @@ class registeract : AppCompatActivity() {
             }
             .addOnCompleteListener{ e->
                 progressDialog.dismiss()
-                Toast.makeText(this, "Failed Creating Account due to $e.message", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@registeract, "Failed Creating Account due to $e.message", Toast.LENGTH_LONG).show()
             }
     }
     private fun updateUserInfo(){
