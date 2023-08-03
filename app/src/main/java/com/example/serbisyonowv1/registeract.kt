@@ -139,29 +139,21 @@ class registeract : AppCompatActivity() {
         birtdate = registeractBinding.birthdate.text.toString().trim()
         gender = registeractBinding.spinnerSex.selectedItem.toString().trim()
 
-        if (fname.isEmpty()){
+        if (fname.isEmpty()) {
             registeractBinding.fname.setError("Please Enter First Name")
-
-        }else  if (lname.isEmpty()){
-            registeractBinding.lname.setError("Please Enter First Name")
-
-        }else  if (email.isEmpty()){
-            registeractBinding.emailReg.setError("Please Enter First Name")
-
-        }
-        else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        } else if (lname.isEmpty()) {
+            registeractBinding.lname.setError("Please Enter Last Name")
+        } else if (email.isEmpty()) {
+            registeractBinding.emailReg.setError("Please Enter Email Address")
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "Invalid Email Address", Toast.LENGTH_LONG).show()
-        }
-        else if (pass.isEmpty()){
-            registeractBinding.passwordReg.setError("Please Enter First Name")
-        }else  if (phoneno.isEmpty()){
-            registeractBinding.phone.setError("Please Enter First Name")
-
-        }
-        else  if (address.isEmpty()){
-            registeractBinding.address.setError("Please Enter First Name")
-
-        }else{
+        } else if (pass.isEmpty()) {
+            registeractBinding.passwordReg.setError("Please Enter Password")
+        } else if (phoneno.isEmpty()) {
+            registeractBinding.phone.setError("Please Enter Phone Number")
+        } else if (address.isEmpty()) {
+            registeractBinding.address.setError("Please Enter Address")
+        } else {
             createUserAccount()
         }
 

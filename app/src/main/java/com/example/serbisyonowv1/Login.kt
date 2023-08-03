@@ -1,5 +1,6 @@
 package com.example.serbisyonowv1
 
+
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -86,22 +87,35 @@ class Login : AppCompatActivity() {
 
         val ref = FirebaseDatabase.getInstance().getReference("Users")
 
-        ref.child(firebaseUser.uid)
-            .addListenerForSingleValueEvent(object : ValueEventListener{
+        ref.child(firebaseUser.uid).addListenerForSingleValueEvent(object : ValueEventListener {
 
-                override fun onDataChange(snapshot: DataSnapshot){
-                    progressDialog.dismiss()
+            override fun onDataChange(snapshot: DataSnapshot) {
+                progressDialog.dismiss()
 
+                // Check if the snapshot exists and contains the user's data
+                if (snapshot.exists()) {
+                    // Get the user data from the snapshot
+                    val userData = snapshot.getValue(User::class.java)
 
-                        startActivity(Intent(this@Login, dashboard::class.java))
-                        finish()
-
+                    // Pass the user data to the dashboard activity
+                    val dashboardIntent = Intent(this@Login, dashboard::class.java)
+                    dashboardIntent.putExtra("userData", userData)
+                    startActivity(dashboardIntent)
+                    finish()
+                } else {
+                    // If the user's data does not exist in the database, show an error message
+                    Toast.makeText(this@Login, "User does not exist. Please register first.", Toast.LENGTH_LONG).show()
+                    // Optionally, you can redirect the user to the registration page here
+                    // startActivity(Intent(this@Login, registeract::class.java))
                 }
-                override fun onCancelled(error: DatabaseError){
+            }
 
-                }
-            })
-
-
+            override fun onCancelled(error: DatabaseError) {
+                progressDialog.dismiss()
+                Toast.makeText(this@Login, "Database Error: ${error.message}", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 }
+
+
