@@ -10,13 +10,6 @@
     >
 
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/nav_view"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu"
-        android:layout_gravity="start"/>
 
 
     <!-- TODO: Update blank fragment layout -->
@@ -27,28 +20,7 @@
 
         >
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tool_bar"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="15dp"
 
-            app:navigationIcon="@drawable/ic_profile">
-
-
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/poppinsbold"
-                android:text="Workers"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="25dp" />
-
-        </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
             android:id="@+id/layout2"

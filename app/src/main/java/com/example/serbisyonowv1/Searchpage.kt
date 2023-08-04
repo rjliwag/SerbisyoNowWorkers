@@ -10,16 +10,14 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.serbisyonowv1.databinding.ActivityMaindashboardBinding
-import com.example.serbisyonowv1.databinding.FragmentSearchpageBinding
-import com.example.serbisyonowv1.databinding.HeaderBinding
-import com.google.android.material.navigation.NavigationView
+
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -42,25 +40,24 @@ private const val ARG_PARAM2 = "param2"
 class Searchpage : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var userDataViewModel: UserDataViewModel
+    private lateinit var username: TextView
+    private lateinit var emailview: TextView
+
 
 
 
     override fun onViewCreated(view: View ,savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         userDataViewModel = ViewModelProvider(requireActivity()).get(UserDataViewModel::class.java)
 
-        val fullname = userDataViewModel.fullname
+        val fname = userDataViewModel.fullname
         val email = userDataViewModel.email
 
 
 
-
-
-
-
-
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,9 +65,6 @@ class Searchpage : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_searchpage, container, false)
-
-
-
 
     }
 
