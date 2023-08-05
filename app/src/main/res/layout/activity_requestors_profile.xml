@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         >
         <ImageView
+            android:id="@+id/backpress"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="15dp"
             android:layout_width="wrap_content"
@@ -43,24 +44,17 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:background="@drawable/profilepicture"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FirstName"
-            android:textSize="25dp"
-            android:fontFamily="@font/poppinssemibold"/>
+
             <TextView
+                android:id="@+id/fullname"
                 android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LastName"
+                android:text="FullName"
                 android:textSize="25dp"
                 android:fontFamily="@font/poppinssemibold"/>
 
-        </LinearLayout>
+
 
    <LinearLayout
        android:layout_width="wrap_content"
@@ -75,7 +69,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:text="12345678"
-
+            android:id="@+id/userid"
            android:paddingLeft="10dp"/>
    </LinearLayout>
         <TextView
@@ -183,6 +177,7 @@
             android:drawablePadding="17dp"
             android:fontFamily="@font/poppinsregular"/>
     <TextView
+        android:id="@+id/useraddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Adress Sample Here"
@@ -197,6 +192,7 @@
             >
 
             <TextView
+                android:id="@+id/email_add"
                 android:layout_width="295dp"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/emaildrawable"

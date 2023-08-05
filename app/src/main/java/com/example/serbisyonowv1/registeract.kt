@@ -180,7 +180,7 @@ class registeract : AppCompatActivity() {
 
         val hashMap: HashMap<String, Any?> = HashMap()
         hashMap["uid"] = uid
-        hashMap["fullname"] = fname + lname
+        hashMap["fullname"] = fname +" "+ lname
         hashMap["email"] = email
         hashMap["phoneno"] = phoneno
         hashMap["address"] = address

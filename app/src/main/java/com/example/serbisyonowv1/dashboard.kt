@@ -4,6 +4,7 @@ import UserDataViewModel
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 
 import android.widget.TextView
@@ -30,6 +31,7 @@ class dashboard : AppCompatActivity() {
     private lateinit var emailview: TextView
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var toolbar: Toolbar
+    private lateinit var toggle : ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
@@ -38,8 +40,6 @@ class dashboard : AppCompatActivity() {
         userDataViewModel = ViewModelProvider(this).get(UserDataViewModel::class.java)
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
-
-
         drawerLayout = findViewById(R.id.drawerLayout)
         toolbar = findViewById(R.id.tool_bar_dash)
 
@@ -50,14 +50,30 @@ class dashboard : AppCompatActivity() {
         // Hide default title
 
 
-        val actionBarDrawerToggle = ActionBarDrawerToggle(
+        toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,
             R.string.open,
             R.string.close
         )
 
-        drawerLayout.addDrawerListener(actionBarDrawerToggle)
-        actionBarDrawerToggle.syncState()
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        val navView: NavigationView = findViewById(R.id.nav_view)
+
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.nav_profile -> startActivity(Intent(this, requestorsProfile::class.java))
+                R.id.nav_history -> startActivity(Intent(this, jobhistory::class.java))
+                R.id.nav_settings -> startActivity(Intent(this, settings::class.java))
+                R.id.nav_logout -> logoutUser()
+
+            }
+            true
+        }
+
+
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         toolbar.setNavigationIcon(R.drawable.ic_profile)
@@ -83,6 +99,13 @@ class dashboard : AppCompatActivity() {
             true
         }
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun checkUser() {
@@ -152,6 +175,16 @@ class dashboard : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame_layout,fragment)
         fragmentTransaction.commit()
+    }
+
+    private fun logoutUser() {
+        // Perform logout logic (in this case, using Firebase Auth)
+        firebaseAuth.signOut()
+
+        // Navigate back to the login screen
+        val intent = Intent(this, Login::class.java)
+        startActivity(intent)
+        finish() // Optional: You can finish the current activity to prevent the user from returning to it using the back button.
     }
 
 
