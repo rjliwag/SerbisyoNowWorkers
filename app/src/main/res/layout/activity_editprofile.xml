@@ -1,9 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".editprofile">
+    tools:context=".editprofile"
+    android:background="#FBFBFB">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrowback"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"
+            android:textSize="25dp"
+            android:layout_marginLeft="80dp"
+            android:fontFamily="@font/poppinsbold"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileimg"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/defaultprofile"
+            app:civ_border_color="@color/gray"
+            app:civ_border_width="2dp"
+            app:civ_circle_background_color="#FBFBFB"
+            android:layout_centerInParent="true"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_gravity="bottom"
+            android:id="@+id/addprofile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@drawable/ic_camera"
+            android:layout_marginLeft="-50dp"
+            />
+
+
+
+    </LinearLayout>
+      <TextView
+          android:layout_marginTop="10dp"
+          android:layout_gravity="center"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="SAMPLE NAME"
+          android:fontFamily="@font/poppinsbold"
+          android:textSize="20dp"/>
+
+      <EditText
+          android:layout_gravity="center"
+          android:layout_width="300dp"
+          android:layout_height="50dp"
+          android:hint="Email Address"
+          android:background="@drawable/button_shape"
+          android:backgroundTint="@color/white"
+          android:drawableStart="@drawable/email_icon"
+          android:drawablePadding="15dp"/>
+      <EditText
+          android:layout_marginTop="20dp"
+          android:layout_width="300dp"
+          android:layout_height="50dp"
+          android:ems="10"
+          android:hint="Phone Number"
+          android:inputType="phone"
+          android:layout_gravity="center"
+          android:background="@drawable/button_shape"
+          android:backgroundTint="@color/white"
+          android:drawableStart="@drawable/ic_location"
+          android:drawablePadding="15dp" />
+
+      <EditText
+          android:layout_marginTop="20dp"
+          android:layout_width="300dp"
+          android:layout_height="50dp"
+          android:hint="ADDRESS"
+          android:layout_gravity="center"
+          android:background="@drawable/button_shape"
+          android:backgroundTint="@color/white"
+          android:drawableStart="@drawable/ic_location"
+          android:drawablePadding="15dp"/>
+
+
+
+  </LinearLayout>
+
+
+</RelativeLayout>

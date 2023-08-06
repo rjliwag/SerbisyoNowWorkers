@@ -23,6 +23,8 @@ class requestorsProfile : AppCompatActivity() {
         binding = ActivityRequestorsProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
@@ -31,7 +33,9 @@ class requestorsProfile : AppCompatActivity() {
             finish()
         }
 
-
+        binding.edittext.setOnClickListener {
+            startActivity(Intent(this, editprofile::class.java))
+        }
 
 
     }
