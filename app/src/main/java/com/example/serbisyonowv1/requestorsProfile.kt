@@ -59,15 +59,21 @@ class requestorsProfile : AppCompatActivity() {
             .addOnSuccessListener {
                 if (it.exists()){
                     val uid = it.child("uid").value
-                    val fullname = it.child("fullname").value
+                    val fullname = it.child("firstname").value
+                    val lstname = it.child("lastname").value
                     val address = it.child("address").value
                     val emailadd = it.child("email").value
+                    val birthday = it.child("birthday").value
+                    val gender = it.child("gender").value
 
 
                     binding.fullname.text = "$fullname"
+                    binding.lname.text = "$lstname"
                     binding.userid.text= "$uid"
                     binding.useraddress.text = "$address"
                     binding.emailAdd.text = "$emailadd"
+                    binding.userbday.text = "$birthday"
+                    binding.usergender.text = "$gender"
 
                 }
                 else{

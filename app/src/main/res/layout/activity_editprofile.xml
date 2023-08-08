@@ -30,6 +30,12 @@
             android:textSize="25dp"
             android:layout_marginLeft="80dp"
             android:fontFamily="@font/poppinsbold"/>
+        <ImageView
+            android:id="@+id/savebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_check"
+            android:layout_marginLeft="80dp"/>
 
     </LinearLayout>
     <LinearLayout
@@ -65,16 +71,39 @@
 
 
     </LinearLayout>
-      <TextView
-          android:layout_marginTop="10dp"
-          android:layout_gravity="center"
+      <LinearLayout
+          android:layout_marginTop="15dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+      <LinearLayout
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="SAMPLE NAME"
-          android:fontFamily="@font/poppinsbold"
-          android:textSize="20dp"/>
+          android:layout_gravity="center"
+          >
+      <EditText
+          android:layout_gravity="center"
+          android:layout_width="150dp"
+          android:layout_height="50dp"
+          android:hint="FirstName"
+          android:background="@drawable/button_shape"
+          android:backgroundTint="@color/white"
+          android:drawableStart="@drawable/ic_usericon"
+          android:drawablePadding="15dp"/>
+      <EditText
+          android:layout_marginLeft="10dp"
+          android:layout_gravity="center"
+          android:layout_width="150dp"
+          android:layout_height="50dp"
+          android:hint="Lastname"
+          android:background="@drawable/button_shape"
+          android:backgroundTint="@color/white"
+          android:drawableStart="@drawable/ic_usericon"
+          android:drawablePadding="15dp"/>
+      </LinearLayout>
 
       <EditText
+          android:layout_marginTop="10dp"
           android:layout_gravity="center"
           android:layout_width="300dp"
           android:layout_height="50dp"
@@ -93,7 +122,7 @@
           android:layout_gravity="center"
           android:background="@drawable/button_shape"
           android:backgroundTint="@color/white"
-          android:drawableStart="@drawable/ic_location"
+          android:drawableStart="@drawable/ic_contact"
           android:drawablePadding="15dp" />
 
       <EditText
@@ -108,7 +137,7 @@
           android:drawablePadding="15dp"/>
 
 
-
+      </LinearLayout>
   </LinearLayout>
 
 

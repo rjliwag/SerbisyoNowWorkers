@@ -20,6 +20,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import java.util.Calendar
+import java.util.GregorianCalendar
 import java.util.regex.Pattern
 
 
@@ -60,7 +61,7 @@ class registeract : AppCompatActivity() {
         birthday.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
                 this,
-                DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                { _, year, month, dayOfMonth ->
                     val dateString = "$dayOfMonth / ${month + 1} / $year"
                     birthday.setText(dateString)
                 },
@@ -68,8 +69,18 @@ class registeract : AppCompatActivity() {
                 Mmonth,
                 day
             )
+
+            // Set the minimum and maximum date for the DatePickerDialog
+            val minYear = 1958
+            val maxYear = 2009
+            val minDate = GregorianCalendar(minYear, 0, 1).timeInMillis
+            val maxDate = GregorianCalendar(maxYear, 11, 31).timeInMillis
+            datePickerDialog.datePicker.minDate = minDate
+            datePickerDialog.datePicker.maxDate = maxDate
+
             datePickerDialog.show()
         }
+
 
         val spinnerSex = findViewById<Spinner>(R.id.spinnerSex)
         val sexArray = arrayOf("Gender","Male", "Female","Others")
@@ -149,7 +160,16 @@ class registeract : AppCompatActivity() {
             registeractBinding.emailReg.setError("Invalid Email Address")
         } else if (pass.isEmpty()) {
             registeractBinding.passwordReg.setError("Please Enter Password")
-        } else if (phoneno.isEmpty()) {
+        }
+        else if (pass.length < 8) {
+            registeractBinding.passwordReg.setError("Password must be at least 8 characters long")
+        } else if (!pass.matches(".*\\d.*".toRegex())) {
+            registeractBinding.passwordReg.setError("Password must contain at least one digit")
+        } else if (!pass.matches(".*[A-Z].*".toRegex())) {
+            registeractBinding.passwordReg.setError("Password must contain at least one uppercase letter")
+        } else if (!pass.matches(".*[a-z].*".toRegex())) {
+            registeractBinding.passwordReg.setError("Password must contain at least one lowercase letter")
+        }else if (phoneno.isEmpty()) {
             registeractBinding.phone.setError("Please Enter Phone Number")
         } else if (address.isEmpty()) {
             registeractBinding.address.setError("Please Enter Address")
@@ -166,9 +186,9 @@ class registeract : AppCompatActivity() {
             .addOnCompleteListener{
                 updateUserInfo()
             }
-            .addOnCompleteListener{ e->
+            .addOnFailureListener(){ e->
                 progressDialog.dismiss()
-                Toast.makeText(this@registeract, "Failed Creating Account due to $e.message", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Failed Creating Account due to $e.message", Toast.LENGTH_LONG).show()
             }
     }
     private fun updateUserInfo(){
@@ -180,7 +200,8 @@ class registeract : AppCompatActivity() {
 
         val hashMap: HashMap<String, Any?> = HashMap()
         hashMap["uid"] = uid
-        hashMap["fullname"] = fname +" "+ lname
+        hashMap["firstname"] = fname
+        hashMap["lastname"] = lname
         hashMap["email"] = email
         hashMap["phoneno"] = phoneno
         hashMap["address"] = address

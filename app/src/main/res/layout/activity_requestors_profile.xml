@@ -44,7 +44,9 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:background="@drawable/profilepicture"/>
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/fullname"
                 android:layout_marginLeft="5dp"
@@ -53,9 +55,17 @@
                 android:text="FullName"
                 android:textSize="25dp"
                 android:fontFamily="@font/poppinssemibold"/>
+            <TextView
+                android:id="@+id/lname"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FullName"
+                android:textSize="25dp"
+                android:fontFamily="@font/poppinssemibold"/>
 
 
-
+</LinearLayout>
    <LinearLayout
        android:layout_width="wrap_content"
        android:layout_height="wrap_content">
@@ -152,7 +162,7 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/statistics"
         android:layout_centerHorizontal="true"
@@ -160,58 +170,111 @@
         android:gravity="center">
      <View
          android:layout_marginTop="10dp"
-         android:layout_width="350dp"
+         android:layout_width="400dp"
          android:layout_height="1dp"
          android:background="#C8C8D1"
          android:layout_marginBottom="10dp"/>
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lives in "
-            android:textSize="20dp"
-            android:drawableStart="@drawable/houselocation"
-            android:drawablePadding="17dp"
-            android:fontFamily="@font/poppinsregular"/>
-    <TextView
-        android:id="@+id/useraddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Adress Sample Here"
-        android:layout_marginLeft="5dp"
-        android:textSize="17dp"
-        android:fontFamily="@font/poppinsbold"/>
-
-</LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             >
 
             <TextView
-                android:id="@+id/email_add"
-                android:layout_width="295dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Lives in"
+                android:drawableStart="@drawable/houselocation"
+                android:drawablePadding="10dp"
+                android:textSize="15dp"
+                />
+            <TextView
+                android:id="@+id/useraddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sample Address Here"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/poppinsbold"
+                android:textSize="15dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
                 android:drawableStart="@drawable/emaildrawable"
-                android:drawablePadding="17dp"
-                android:fontFamily="@font/poppinsregular"
-                android:text="example@email.com"
-                android:textSize="20dp" />
+                android:textSize="15dp"
 
+                />
+            <TextView
+                android:id="@+id/emailAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sample Address Here"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/poppinsbold"
+                android:textSize="15dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="birthday"
+                android:drawableStart="@drawable/ic_userbday"
+                android:drawablePadding="10dp"
+                android:textSize="15dp"
+                />
+            <TextView
+                android:id="@+id/userbday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sample birthday"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/poppinsbold"
+                android:textSize="15dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:drawableStart="@drawable/ic_gender"
+
+                android:textSize="15dp"
+                />
+            <TextView
+                android:id="@+id/usergender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/poppinsbold"
+
+                android:textSize="15dp"
+                />
         </LinearLayout>
 
 
         <View
             android:layout_marginTop="10dp"
-            android:layout_width="350dp"
+            android:layout_width="400dp"
             android:layout_height="1dp"
-            android:layout_below="@id/statistics"
-            android:layout_centerHorizontal="true"
+
             android:background="#C8C8D1"/>
     </LinearLayout>
 

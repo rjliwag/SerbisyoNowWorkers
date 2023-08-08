@@ -1,6 +1,7 @@
 package com.example.serbisyonowv1
 
 import UserDataViewModel
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -29,9 +30,11 @@ class dashboard : AppCompatActivity() {
     lateinit var userDataViewModel: UserDataViewModel
     private lateinit var username: TextView
     private lateinit var emailview: TextView
+    private lateinit var lname: TextView
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var toolbar: Toolbar
     private lateinit var toggle : ActionBarDrawerToggle
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
@@ -88,10 +91,23 @@ class dashboard : AppCompatActivity() {
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.menu_search -> replaceFragment(Searchpage())
-                R.id.menu_jobs -> replaceFragment(jobpage())
-                R.id.menu_messages -> replaceFragment(messagepage())
-                R.id.menu_notification -> replaceFragment(notifpage())
+                R.id.menu_search -> {
+                    binding.toolbartitle.text = "Workers"
+
+                    replaceFragment(Searchpage())
+                }
+                R.id.menu_jobs -> {
+                    binding.toolbartitle.text = "Dashboard"
+                    replaceFragment(jobpage())
+                }
+                R.id.menu_messages -> {
+                    binding.toolbartitle.text = "Messages"
+                    replaceFragment(messagepage())
+                }
+                R.id.menu_notification -> {
+                    binding.toolbartitle.text = "Notification"
+                    replaceFragment(notifpage())
+                }
 
                 else -> {
                 }
@@ -129,7 +145,8 @@ class dashboard : AppCompatActivity() {
             .addOnSuccessListener {
                 if (it.exists()){
                     val uid = it.child("uid").value
-                    val fullname = it.child("fullname").value
+                    val fullname = it.child("firstname").value
+                    val lastname = it.child("lastname").value
                     val email = it.child("email").value
 
                     // Set the data in the ViewModel
@@ -147,10 +164,13 @@ class dashboard : AppCompatActivity() {
                     // Get the header view (your nav_header_layout.xml)
                     val headerView = navigationView.getHeaderView(0)
                     username = headerView.findViewById(R.id.username)
+
                     emailview = headerView.findViewById(R.id.currentemail)
+                    lname = headerView.findViewById(R.id.lname)
 
                     username.text = fname
                     emailview.text = cemail
+                    lname.text = lastname.toString()
 
 
 
