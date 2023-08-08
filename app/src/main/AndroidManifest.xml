@@ -10,7 +10,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -22,14 +21,19 @@
         android:theme="@style/Theme.SerbisyoNowv1"
         tools:targetApi="31">
         <activity
+            android:name=".forgotPassword"
+            android:exported="false">
+
+        </activity>
+        <activity
             android:name=".editprofile"
-            android:exported="true"/>
+            android:exported="false" />
         <activity
             android:name=".settings"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".jobhistory"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".dashboard"
             android:exported="false" />

@@ -102,6 +102,7 @@
             android:textSize="15dp"
             android:layout_marginTop="25dp"
             android:layout_centerHorizontal="true"
+            android:textColor="#87CEEB"
 
             />
 
@@ -114,7 +115,7 @@
         android:layout_height="60dp"
         android:layout_below="@id/layout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:text="@string/login"
         android:textSize="18sp"
         android:backgroundTint="@color/maroon"

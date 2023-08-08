@@ -82,6 +82,7 @@
           android:layout_gravity="center"
           >
       <EditText
+          android:id="@+id/fstname"
           android:layout_gravity="center"
           android:layout_width="150dp"
           android:layout_height="50dp"
@@ -91,6 +92,7 @@
           android:drawableStart="@drawable/ic_usericon"
           android:drawablePadding="15dp"/>
       <EditText
+          android:id="@+id/lstname"
           android:layout_marginLeft="10dp"
           android:layout_gravity="center"
           android:layout_width="150dp"
@@ -102,17 +104,9 @@
           android:drawablePadding="15dp"/>
       </LinearLayout>
 
+
       <EditText
-          android:layout_marginTop="10dp"
-          android:layout_gravity="center"
-          android:layout_width="300dp"
-          android:layout_height="50dp"
-          android:hint="Email Address"
-          android:background="@drawable/button_shape"
-          android:backgroundTint="@color/white"
-          android:drawableStart="@drawable/email_icon"
-          android:drawablePadding="15dp"/>
-      <EditText
+          android:id="@+id/phoneno"
           android:layout_marginTop="20dp"
           android:layout_width="300dp"
           android:layout_height="50dp"
@@ -126,6 +120,7 @@
           android:drawablePadding="15dp" />
 
       <EditText
+          android:id="@+id/useraddress"
           android:layout_marginTop="20dp"
           android:layout_width="300dp"
           android:layout_height="50dp"

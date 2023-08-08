@@ -39,7 +39,10 @@ class Login : AppCompatActivity() {
         binding.loginbutton.setOnClickListener {
             validateData()
         }
-
+        binding.forgotText.setOnClickListener {
+            startActivity(Intent(this, forgotPassword::class.java))
+            finish()
+        }
     }
 
     private var email = ""
