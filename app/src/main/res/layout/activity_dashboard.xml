@@ -17,24 +17,34 @@
         android:orientation="vertical"
 
         >
+
+
         <androidx.appcompat.widget.Toolbar
+            android:layout_marginHorizontal="15dp"
             android:id="@+id/tool_bar_dash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/ic_profile">
+
             <TextView
                 android:id="@+id/toolbartitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Workers"
-                android:paddingTop="10dp"
-                android:textSize="25dp"
                 android:layout_gravity="center"
-                android:fontFamily="@font/poppinsbold"/>
+                android:fontFamily="@font/poppinsbold"
+                android:paddingTop="10dp"
+                android:text="Workers"
+                android:textSize="25dp" />
+
+            <ImageView
+                android:id="@+id/addjob"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/add"
+                android:layout_gravity="end"/>
         </androidx.appcompat.widget.Toolbar>
 
-
-    <FrameLayout
+        <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/frame_layout"

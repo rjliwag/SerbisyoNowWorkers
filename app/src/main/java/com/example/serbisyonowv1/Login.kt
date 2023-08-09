@@ -3,6 +3,7 @@ package com.example.serbisyonowv1
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
@@ -67,6 +68,11 @@ class Login : AppCompatActivity() {
     }
 
     private fun loginUser() {
+        if (!isNetworkAvailable()) {
+            progressDialog.dismiss()
+            Toast.makeText(this, "No internet connection. Please check your network settings.", Toast.LENGTH_LONG).show()
+            return
+        }
 
         progressDialog.setMessage("Logging In...")
         progressDialog.show()
@@ -74,14 +80,19 @@ class Login : AppCompatActivity() {
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 checkUser()
-
             }
             .addOnFailureListener{e->
                 progressDialog.dismiss()
-                Toast.makeText(this, "Login Failed due to $e.message", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Incorrect username or password. Please try again.", Toast.LENGTH_LONG).show()
             }
-
     }
+
+    private fun isNetworkAvailable(): Boolean {
+        val connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+        return networkInfo != null && networkInfo.isConnected
+    }
+
 
     private fun checkUser() {
         progressDialog.setMessage("Checking User....")

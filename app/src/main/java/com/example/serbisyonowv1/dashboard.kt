@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.isVisible
 
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -20,6 +21,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -96,20 +98,24 @@ class dashboard : AppCompatActivity() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.menu_search -> {
+                    binding.addjob.isVisible = true
                     binding.toolbartitle.text = "Workers"
 
                     replaceFragment(Searchpage())
                 }
                 R.id.menu_jobs -> {
+                    binding.addjob.isVisible = true
                     binding.toolbartitle.text = "Dashboard"
                     replaceFragment(jobpage())
                 }
                 R.id.menu_messages -> {
                     binding.toolbartitle.text = "Messages"
+                    binding.addjob.isVisible = false
                     replaceFragment(messagepage())
                 }
                 R.id.menu_notification -> {
                     binding.toolbartitle.text = "Notification"
+                    binding.addjob.isVisible = false
                     replaceFragment(notifpage())
                 }
 
@@ -163,8 +169,6 @@ class dashboard : AppCompatActivity() {
                     val cemail = userDataViewModel.email
 
 
-
-
                     val navigationView: NavigationView = findViewById(R.id.nav_view)
 
                     // Get the header view (your nav_header_layout.xml)
@@ -180,10 +184,11 @@ class dashboard : AppCompatActivity() {
                     lname.text = lastname.toString()
 
                     if (profilepic != null && profilepic.toString().isNotEmpty()) {
-                        Picasso.get().load(profilepic.toString()).into(profileImage)
+                        Picasso.get()
+                            .load(profilepic.toString())
+                            .memoryPolicy(MemoryPolicy.NO_CACHE)
+                            .into(profileImage)
                     }
-
-
 
                 }
                 else{
@@ -196,8 +201,6 @@ class dashboard : AppCompatActivity() {
 
     }
 
-
-
     private fun replaceFragment(fragment : Fragment){
 
         val fragmentManager = supportFragmentManager
@@ -207,13 +210,10 @@ class dashboard : AppCompatActivity() {
     }
 
     private fun logoutUser() {
-        // Perform logout logic (in this case, using Firebase Auth)
         firebaseAuth.signOut()
-
-        // Navigate back to the login screen
         val intent = Intent(this, Login::class.java)
         startActivity(intent)
-        finish() // Optional: You can finish the current activity to prevent the user from returning to it using the back button.
+        finish()
     }
 
 
