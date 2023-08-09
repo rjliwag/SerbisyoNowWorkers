@@ -10,35 +10,41 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp">
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="15dp"
+          android:layout_marginHorizontal="15dp">
 
-        <ImageButton
-            android:id="@+id/ic_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrowback"
-            android:background="@android:color/transparent"
-            android:layout_marginLeft="10dp"/>
+          <ImageButton
+              android:id="@+id/ic_back"
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              android:src="@drawable/arrowback"
+              android:background="@android:color/transparent"
+              />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit Profile"
-            android:textSize="25dp"
-            android:layout_marginLeft="80dp"
-            android:fontFamily="@font/poppinsbold"/>
-        <ImageView
-            android:id="@+id/savebtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_check"
-            android:layout_marginLeft="80dp"/>
+          <ImageView
+              android:id="@+id/savebtn"
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              android:src="@drawable/ic_check"
+              android:layout_alignParentEnd="true"/>
 
-    </LinearLayout>
-    <LinearLayout
+          <TextView
+              android:gravity="center"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Edit Profile"
+              android:textSize="25sp"
+              android:fontFamily="@font/poppinsbold"
+              android:layout_centerHorizontal="true"
+              android:layout_toEndOf="@id/ic_back"
+              android:layout_toStartOf="@id/savebtn"/>
+
+      </RelativeLayout>
+
+      <LinearLayout
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,20 +58,17 @@
             android:src="@drawable/defaultprofile"
             app:civ_border_color="@color/gray"
             app:civ_border_width="2dp"
-            app:civ_circle_background_color="#FBFBFB"
-            android:layout_centerInParent="true"/>
+            app:civ_circle_background_color="#FBFBFB" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_gravity="bottom"
             android:id="@+id/addprofile"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:clickable="true"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
             app:srcCompat="@drawable/ic_camera"
-            android:layout_marginLeft="-50dp"
+            android:layout_marginStart="-50dp"
             />
 
 
@@ -93,7 +96,7 @@
           android:drawablePadding="15dp"/>
       <EditText
           android:id="@+id/lstname"
-          android:layout_marginLeft="10dp"
+          android:layout_marginStart="10dp"
           android:layout_gravity="center"
           android:layout_width="150dp"
           android:layout_height="50dp"

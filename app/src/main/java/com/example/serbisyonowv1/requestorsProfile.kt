@@ -12,6 +12,7 @@ import com.example.serbisyonowv1.databinding.ActivityRequestorsProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.squareup.picasso.Picasso
 
 class requestorsProfile : AppCompatActivity() {
     private lateinit var binding: ActivityRequestorsProfileBinding
@@ -65,6 +66,7 @@ class requestorsProfile : AppCompatActivity() {
                     val emailadd = it.child("email").value
                     val birthday = it.child("birthday").value
                     val gender = it.child("gender").value
+                    val profilepic = it.child("ImageProfile").value
 
 
                     binding.fullname.text = "$fullname"
@@ -74,6 +76,11 @@ class requestorsProfile : AppCompatActivity() {
                     binding.emailAdd.text = "$emailadd"
                     binding.userbday.text = "$birthday"
                     binding.usergender.text = "$gender"
+
+                    val profileImage = binding.profileimg // Replace with your ImageView ID in the layout
+                    if (profilepic != null && profilepic.toString().isNotEmpty()) {
+                        Picasso.get().load(profilepic.toString()).into(profileImage)
+                    }
 
                 }
                 else{

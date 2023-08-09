@@ -20,6 +20,8 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 
 class dashboard : AppCompatActivity() {
 
@@ -31,9 +33,11 @@ class dashboard : AppCompatActivity() {
     private lateinit var username: TextView
     private lateinit var emailview: TextView
     private lateinit var lname: TextView
+    private lateinit var profileImage: CircleImageView
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var toolbar: Toolbar
     private lateinit var toggle : ActionBarDrawerToggle
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -148,6 +152,7 @@ class dashboard : AppCompatActivity() {
                     val fullname = it.child("firstname").value
                     val lastname = it.child("lastname").value
                     val email = it.child("email").value
+                    val profilepic = it.child("ImageProfile").value
 
                     // Set the data in the ViewModel
                     userDataViewModel.uid = uid as? String
@@ -159,6 +164,7 @@ class dashboard : AppCompatActivity() {
 
 
 
+
                     val navigationView: NavigationView = findViewById(R.id.nav_view)
 
                     // Get the header view (your nav_header_layout.xml)
@@ -167,12 +173,15 @@ class dashboard : AppCompatActivity() {
 
                     emailview = headerView.findViewById(R.id.currentemail)
                     lname = headerView.findViewById(R.id.lname)
+                    profileImage = headerView.findViewById(R.id.profileimg)
 
                     username.text = fname
                     emailview.text = cemail
                     lname.text = lastname.toString()
 
-
+                    if (profilepic != null && profilepic.toString().isNotEmpty()) {
+                        Picasso.get().load(profilepic.toString()).into(profileImage)
+                    }
 
 
 
